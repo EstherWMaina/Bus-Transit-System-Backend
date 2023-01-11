@@ -53,7 +53,20 @@ Rails.application.configure do
   # Highlight code that triggered database queries in logs.
   config.active_record.verbose_query_logs = true
   
+  #enable to have dynamic urls and allow to access our rails app form ngrok
   config.hosts << /[a-z0-9-.]+\.ngrok\.io/
+
+  #If you are accessing this URl in a specific port (typically :3000) the :\d+ part of the regular expression is necessary
+  config.hosts <<  /.+\.ngrok\.io:\d+/
+
+   # config.hosts << "hostname" # Whitelist one hostname
+
+  # config.hosts << /application\.local\Z/ # Whitelist a test domain
+
+  #Clear the entire whitelist, which lets through requests for all hostnames
+  # config.hosts.clear
+
+  # config.hosts = nil 
 
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
